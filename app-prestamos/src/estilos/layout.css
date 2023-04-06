@@ -1,0 +1,32 @@
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #464646;
+  color: #fff;
+  z-index: 1;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  li {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  li a {
+    display: block;
+    padding: 0.5rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  li a.active {
+    background-color: #555;
+  }
+  
