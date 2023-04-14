@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../estilos/layout.css';
 import { Link } from 'react-router-dom';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-
-
+import { useContext } from 'react';
+import { ContextoUsuario } from './contexto/ContextoUsuario';
+import Login from '../paginas/Login';
 
 const Layout = () => {
+  const { email,logout,ocultarDiv,textoBoton } = useContext(ContextoUsuario);
+ 
+
+  useEffect(() => {
+    console.log(email);
+    console.log(ocultarDiv);
+  }, []);
+
   return (
     <nav>
-      
+    <div>
+    <p id='emailactivo'>Email: {email}</p>  
+    {ocultarDiv ?  <div id="cerrarsesion" onClick={logout}>{textoBoton}</div> :  null }
+
+    </div> 
         <ul>
           <li>
            
@@ -28,8 +40,10 @@ const Layout = () => {
             </Link>
           </li>
         </ul>
-        
+             
+     
     </nav>
+
   )
 }
 

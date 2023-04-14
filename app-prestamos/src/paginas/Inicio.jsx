@@ -1,11 +1,11 @@
 import React, { useEffect, useState }  from 'react'
-//import { useSpring, animated } from 'react-spring';
-//import Login from '../Login';
-//import { useContext } from 'react';
-//import { ContextoUsuario } from '../componentes/contexto/ContextoUsuario';
+import { useContext } from 'react';
+import { ContextoUsuario } from '../componentes/contexto/ContextoUsuario';
 import { gsap } from 'gsap';
 
 const Inicio = () => {
+  const { email } = useContext(ContextoUsuario);
+  
   function animateBox() {
     let tiempo = gsap.timeline({
       repeat: 0,
@@ -25,14 +25,17 @@ const Inicio = () => {
 
  useEffect(() => {
    animateBox();
+   console.log(email);
  }, []);
 
   return (
-    <div className='titulo'>
+    <div>
+   
+      <div className='titulo'>
         <h2>BIENVENIDOS</h2>
       </div>
-   
-
+      
+    </div>
 
   )
 }

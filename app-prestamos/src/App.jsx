@@ -1,13 +1,16 @@
 import './App.css';
 import Menu from './componentes/Menu';
+import { UserProvider } from './componentes/contexto/ContextoUsuario';
 
 
 function App() {
  
   return (
-    <div className="App">
-    <Menu />
-    </div>
+    <UserProvider>
+      <div className="App">
+       <Menu />
+      </div>
+    </UserProvider>
   )
 } 
 

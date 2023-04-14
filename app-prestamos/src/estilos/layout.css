@@ -29,4 +29,16 @@ nav {
   li a.active {
     background-color: #555;
   }
+
+  #cerrarsesion{
+   color: #8895d4;
+   float: right;
+   cursor: pointer;
+   margin: 3px;
+  }
+
+  #cerrarsesion:hover{
+    color: #12193f;
+   }
+   
   

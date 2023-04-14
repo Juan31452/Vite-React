@@ -1,0 +1,85 @@
+.contenedorForm{
+  margin-top: 50px;
+}
+.login-form {
+  margin: 10px, 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #88a3e4;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.label {
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+.submit-btn {
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+  background-color: #0069d9;
+}
+
+.contenedorEnlace{
+  width: 50%; /* Define el ancho del div */
+  margin: 0 auto; /* Define margen superior e inferior a 0 y margen izquierdo y derecho como auto */
+}
+
+.enlace{
+  text-decoration: none;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 400px) {
+  .login-form {
+    max-width: 80%;
+    padding: 10px;
+    margin: 3px,3px;
+  }
+  
+  .label {
+    font-size: 14px;
+  }
+  
+  .input {
+    height: 20px;
+    font-size: 14px;
+  }
+  
+  .button {
+    height: 20px;
+    font-size: 14px;
+  }
+}
