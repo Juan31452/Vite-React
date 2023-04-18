@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import '../estilos/login.css';
+import React, { useEffect, useState } from 'react'
+import '../estilos/form.css';
 import app from "../app.json";
 import axios from 'axios';
 import { useContext } from 'react';
 import { ContextoUsuario } from '../componentes/contexto/ContextoUsuario';
 import Inicio from './Inicio';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import mialerta from 'sweetalert';
-
+import { gsap } from 'gsap'
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -29,6 +29,13 @@ const Login = () => {
       setPassword('');
     })
   }
+  function animateForm() {
+    gsap.to('.Formulario', { duration: 3, y: 50 , ease: 'power3.out', fontSize: '20px'});
+  }
+
+  useEffect(() => {
+    animateForm();
+  }, []);
 
   const CargarDatos = async (event) => {
     event.preventDefault();
@@ -67,25 +74,30 @@ const Login = () => {
   };
   
   return (
-    <div className='contenedorForm'>
-      <form className="login-form" onSubmit={CargarDatos} >
-        
-        <label htmlFor="email">Correo electrónico:</label>
+    <div className='Formulario'>
+      <h3>Inicio Sesion</h3>
+      <form  onSubmit={CargarDatos} >
+      <div className="division-uno">
         <input
         type="email"
         value={email}
+        placeholder="Email"
         onChange={(event) => setEmail(event.target.value)}
         />
-    
-    
-        <label htmlFor="password">Contraseña:</label>
+      </div>
+      <div className="division-uno"> 
         <input
         type="password"
         value={password}
+        placeholder="Password"
         onChange={(event) => setPassword(event.target.value)}
         />
-        <button className="submit-btn" type="submit">Iniciar sesión</button>
+      </div>  
+        <button button type="submit" className="miboton">Iniciar sesión</button>
       </form>
+      <div className="contenedorEnlace">
+        <p><Link to="/UsuarioCrear"> Registrate</Link></p>
+      </div>
     </div>
   )
 }

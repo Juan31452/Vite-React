@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { redirect } from 'react-router-dom';
+import { useNavigate, redirect } from 'react-router-dom';
 
 
 export const ContextoUsuario = createContext({
@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
   const [id, setId] = useState(null);
   const [ocultarDiv, setOcultarDiv] =  useState(true);
   const [textoBoton, setTextoBoton] = useState('Inicio Sesion');
-
+  const navigate = useNavigate();
   
   //const updateEmail = (newEmail) => setEmail(newEmail);
   //const updatePassword = (newPassword) => setPassword(newPassword);
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
       console.log(email);
       console.log(ocultarDiv);
       //window.location.replace('/inicio');
-      redirect ('/inicio');
+      navigate('/inicio');
       
   };
   
@@ -67,9 +67,10 @@ export const UserProvider = ({ children }) => {
     setOcultarDiv(false);
     if (email === '') {
       window.location.replace('/');
+      //navigate('/');
     } else { 
       window.location.replace('/Login'); 
-       
+      //navigate('/Login'); 
     }  
   };
 
