@@ -1,0 +1,15 @@
+.ContenedorConsulta {
+    text-align: right;
+     display: 'inline-block';
+     margin-bottom: 3px;
+  }
+ 
+  #mi-input {
+     text-align: left;
+     display: 'inline-block';
+     margin: 5px 5px;
+     
+   }
+ 
+  
+  

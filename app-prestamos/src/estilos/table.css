@@ -1,0 +1,47 @@
+.table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header {
+    display: table-row;
+    background-color: lightgray;
+    font-weight: bold;
+  }
+  
+  .table-row {
+    display: table-row;
+    
+  }
+  
+  .table-cell {
+    display: table-cell;
+    padding: 8px;
+    border-right: 1px solid gray;
+    vertical-align: middle;
+    
+  }
+  
+    .table-row.selected {
+      background-color: lightblue;
+    }
+  
+    .enlace {
+    display: table-cell;
+    justify-content: "space-between";
+    padding: 1px;
+    vertical-align: middle;
+    
+      
+    }
+  
+    @media screen and (max-width: 768px) {
+      .table {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .table-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }

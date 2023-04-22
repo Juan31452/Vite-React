@@ -18,10 +18,10 @@
     font-size: 13px;
   }
   
-  .miboton {
+  #miboton {
     margin: 10px,15px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #8bbef5;
+    color: #01102a;
     border: none;
     border-radius: 3px;
     padding: 10px,10px;
@@ -31,8 +31,8 @@
     transition: all 0.2s ease-in-out;
   }
 
-  .miboton :hover {
-    background-color: #021020;
+  #miboton :hover {
+    background-color: #1568c6;
   }
   
   .contenedorEnlace{
@@ -45,6 +45,13 @@
     text-decoration: none;
 
   }
+
+  #contenedorBotonAdiciona{
+    text-align: left;
+    display: 'inline-block';
+    margin-bottom: 3px;
+    
+ }
 
   /* Estilos para pantallas pequeñas */
 @media (max-width: 400px) {
