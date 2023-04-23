@@ -72,7 +72,7 @@ const EditarClientes = () => {
   } 
   return (
     <div>
-    <Form onSubmit={GuardarDatos}>
+    <form onSubmit={GuardarDatos}>
     <h1 className='tittle-registro'>Clientes</h1>
       <div className="division-uno">
         <label htmlFor="losnombres">Nombres:</label>
@@ -117,11 +117,11 @@ const EditarClientes = () => {
         />
       </div>
       
-      <Button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Guardar
-      </Button>
+      </button>
       
-    </Form>
+    </form>
 
     </div>
   )

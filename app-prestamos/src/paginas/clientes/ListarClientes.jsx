@@ -97,7 +97,7 @@ const ListarClientes = () => {
                 <div className="table-cell">{cliente.direccion}</div>
               </div>
             );
-          })}
+        })}
       </div>
       <Modal isOpen={mostrar} onClose={() => setMostrar(false)}>
         <ClientesCrear

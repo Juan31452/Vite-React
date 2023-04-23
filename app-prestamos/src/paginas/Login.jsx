@@ -82,6 +82,7 @@ const Login = () => {
         type="email"
         value={email}
         placeholder="Email"
+        required
         onChange={(event) => setEmail(event.target.value)}
         />
       </div>
@@ -90,10 +91,11 @@ const Login = () => {
         type="password"
         value={password}
         placeholder="Password"
+        required
         onChange={(event) => setPassword(event.target.value)}
         />
       </div>  
-        <button button type="submit" className="miboton">Iniciar sesión</button>
+        <button type="submit" className="miboton">Iniciar sesión</button>
       </form>
       <div className="contenedorEnlace">
         <p><Link to="/UsuarioCrear"> Registrate</Link></p>
