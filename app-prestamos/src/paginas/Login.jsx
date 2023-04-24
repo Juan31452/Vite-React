@@ -74,34 +74,38 @@ const Login = () => {
   };
   
   return (
-    <div className='Formulario'>
+    <div className="Formulario">
       <h3>Inicio Sesion</h3>
-      <form  onSubmit={CargarDatos} >
-      <div className="division-uno">
-        <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        required
-        onChange={(event) => setEmail(event.target.value)}
-        />
-      </div>
-      <div className="division-uno"> 
-        <input
-        type="password"
-        value={password}
-        placeholder="Password"
-        required
-        onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>  
-        <button type="submit" className="miboton">Iniciar sesión</button>
+      <form onSubmit={CargarDatos}>
+        <div className="division-uno">
+          <input
+            type="email"
+            value={email}
+            placeholder="Email"
+            required
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div className="division-uno">
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            required
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <button type="submit" id ="miboton">
+          Iniciar sesión
+        </button>
       </form>
       <div className="contenedorEnlace">
-        <p><Link to="/UsuarioCrear"> Registrate</Link></p>
+        <p>
+          <Link to="/UsuarioCrear"> Registrate</Link>
+        </p>
       </div>
     </div>
-  )
+  );
 }
 
 export default Login

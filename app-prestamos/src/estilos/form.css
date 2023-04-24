@@ -5,7 +5,7 @@
     align-items: center;
     width: 400px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #88a3e4;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
@@ -54,21 +54,22 @@
  }
 
   /* Estilos para pantallas pequeñas */
-@media (max-width: 400px) {
+  @media (max-width: 768px) {
   .Formulario {
-    max-width: 80%;
-    padding: 10px;
-    margin: 3px,3px;
+   
+    padding: 1px;
+    margin: 1px,1px;
   }
   
     
-  .input {
-    height: 20px;
-    font-size: 14px;
+  input {
+    height: 15px;
+    font-size: 13px;
   }
   
-  .miboton {
+  #miboton {
     height: 30px;
+    padding: 2px;
     font-size: 12px;
   }
 

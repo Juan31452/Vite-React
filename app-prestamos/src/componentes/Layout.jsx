@@ -7,41 +7,54 @@ import Login from '../paginas/Login';
 
 const Layout = () => {
   const { email,logout,ocultarDiv,textoBoton } = useContext(ContextoUsuario);
- 
+  const [isOpen, setIsOpen] = useState(false); // Estado para manejar la apertura/cierre del menú
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     console.log(email);
     console.log(ocultarDiv);
   }, []);
+  
+  const menuClass = isOpen ? 'menu open' : 'menu';
 
   return (
-    <nav>
-    <div>
-    <p id='emailactivo'>Email: {email}</p>  
-    {ocultarDiv ?  <div id="cerrarsesion" onClick={logout}>{textoBoton}</div> :  null }
-
-    </div> 
-        <ul>
-          <li>
-           
+    <nav> 
+      {ocultarDiv ?  <div id="cerrarsesion" onClick={logout}>{textoBoton}</div> :  null }
+        
+       
+      
+      <div className={menuClass}>
+        <div id='emailactivo'>Email: {email}</div> 
+        
+               
+        <button onClick={toggleMenu} className="menu-button">
+          {isOpen ? 'Cerrar' : 'Menú'}
+        </button>
+        <ul className="menu-list">
+          <li className="menu-item">
+            
               <Link to="/inicio" className="edit-link">
                 Inicio
               </Link>
             
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/clientes" className="nav-link">
               Clientes
             </Link>
           </li>
-          <li>
+          <li className="menu-item">
             <Link to="/prestamos" className="nav-link">
               Prestamos
             </Link>
           </li>
         </ul>
-             
-     
+        
+        
+      </div>  
     </nav>
 
   )
