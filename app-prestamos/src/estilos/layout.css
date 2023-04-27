@@ -4,6 +4,7 @@ nav {
   background-color: #464646;
   color: #fff;
   z-index: 1;
+  padding: 1rem;
 }
   
 /*ul {
@@ -68,6 +69,7 @@ li a.active {
 }
 
 @media (max-width: 768px) {
+  
   .menu {
     flex-direction: column;
   }

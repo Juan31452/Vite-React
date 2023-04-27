@@ -22,12 +22,12 @@ const Layout = () => {
 
   return (
     <nav> 
-      {ocultarDiv ?  <div id="cerrarsesion" onClick={logout}>{textoBoton}</div> :  null }
+      {ocultarDiv ?  <div id="cerrarsesion" onClick={logout}>{email}</div> :  null }
         
        
       
       <div className={menuClass}>
-        <div id='emailactivo'>Email: {email}</div> 
+         
         
                
         <button onClick={toggleMenu} className="menu-button">

@@ -128,7 +128,7 @@ const PrestamosCrear = () => {
            </select>  
         </div>
        
-       <button type="submit" className="btn btn-primary">Adicionar</button>
+       <button type="submit" id="miboton">Adicionar</button>
        
      </form>
   

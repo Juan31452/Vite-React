@@ -11,5 +11,16 @@
      
    }
  
-  
+   @media  (max-width: 768px) {
+      .ContenedorConsulta {
+         text-align: right;
+          display: 'inline-block';
+          margin-bottom: 1px;
+      }
+      #mi-input {
+       text-align: left;
+       display: 'inline-block';
+       margin: 2px 2px;
+      }
+   }  
   

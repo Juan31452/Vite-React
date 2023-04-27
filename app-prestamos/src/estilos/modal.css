@@ -11,12 +11,12 @@
   
   .modal-body {
     background-color: rgb(121, 121, 135);
-    width: 35%;
+    width: 55%;
     height: 60%;
     min-width: 200px;
     border-radius: 1rem;
     position: absolute;
-    left: 60px;
+    left: 80px;
     top: 100px;    
     padding: 1rem;
     overflow-y: scroll;
@@ -27,4 +27,19 @@
     top: 0;
     right: 0;
     margin: .5rem;
+  }
+
+  @media  (max-width: 768px) {
+    .modal-body {
+      
+      width: 90%;
+      height: 55%;
+      left: 0.3rem;
+      top: 1rem;   
+  
+    } 
+
+    .modal-close {
+      margin: .1rem;
+    }
   }

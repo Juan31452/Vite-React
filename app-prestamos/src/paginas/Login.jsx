@@ -96,7 +96,7 @@ const Login = () => {
           />
         </div>
         <button type="submit" id ="miboton">
-          Iniciar sesión
+          Iniciar Sesión
         </button>
       </form>
       <div className="contenedorEnlace">

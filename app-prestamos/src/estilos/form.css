@@ -12,7 +12,7 @@
   }
 
   input {
-    padding: 10px;
+    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 13px;
@@ -43,7 +43,7 @@
 
   .enlace{
     text-decoration: none;
-
+   
   }
 
   #contenedorBotonAdiciona{
@@ -57,25 +57,43 @@
   @media (max-width: 768px) {
   .Formulario {
    
-    padding: 1px;
+    padding: 1rem;
     margin: 1px,1px;
+    align-items: start;
   }
   
+  .division-uno{
+    margin: 0.2rem;
+    width: 0.1rem;
+  }
     
   input {
-    height: 15px;
-    font-size: 13px;
+    width: 18rem;
+    height: 1rem;
+    font-size: 10px;
+    padding: 1rem;
   }
   
   #miboton {
-    height: 30px;
+    width: 5rem;
+    height: 3rem;
     padding: 2px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .contenedorEnlace{
     font-size: 12px;
 
   }
-
+  
+  .enlace{
+   position: sticky; /* Establece la posición fija en el borde superior del contenedor */
+   top: 0; /* Asegura que el enlace se mantenga en la parte superior del contenedor */
+   padding: 1rem; /* Añade un espacio de padding al enlace para mayor legibilidad */
+   background-color: #fff; /* Opcional: añade un fondo blanco para mayor contraste */
+   z-index: 1; /* Asegura que el enlace se muestre encima de la tabla */
+   
+  }
+  
 }
+

@@ -1,3 +1,7 @@
+.Contenedor{
+  position: relative; /* Establece la posición relativa para los elementos hijos */
+}
+
 .table {
     display: table;
     width: 100%;
@@ -12,12 +16,12 @@
   
   .table-row {
     display: table-row;
-    
+    border-bottom: 1px solid #ddd;
   }
   
   .table-cell {
     display: table-cell;
-    padding: 8px;
+    padding: 5px;
     border-right: 1px solid gray;
     vertical-align: middle;
     
@@ -36,12 +40,22 @@
       
     }
   
-    @media screen and (max-width: 768px) {
-      .table {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
+    @media  (max-width: 768px) {
+       
       .table-row {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
+        border-bottom: none;
+        border-bottom: 1px solid #ddd;
+      }
+  
+      .table-cell::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+      }
+
+      .table-header {
+        display: none;
       }
     }

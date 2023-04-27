@@ -58,7 +58,7 @@ const ListarClientes = () => {
   };
 
   return (
-    <div>
+    <div className='Contenedor'>
       <h3>Clientes</h3>
       <Consultar onBuscar={buscarClientesPorNombre}/>
       <div id='contenedorBotonAdiciona'>
@@ -66,9 +66,9 @@ const ListarClientes = () => {
       </div>
       <div className="table">
        {selectedLoan ? (
-         <div>
-           <div className='enlace'><Milink to={`/modificar/${selectedLoan._id}`}> Modificar  </Milink> </div>
-           <div className='enlace'><Milink to={`/confirmarCliente/${selectedLoan._id}`}>Elimina</Milink></div>
+         <div className='enlace'>
+           <Milink to={`/modificar/${selectedLoan._id}`}> Modificar  </Milink> 
+           <Milink to={`/confirmarCliente/${selectedLoan._id}`}>Elimina</Milink>
           </div>
         ) : null} 
 
@@ -89,7 +89,7 @@ const ListarClientes = () => {
                   selectedLoan === cliente ? "selected" : ""
                 }`}
                 onClick={() => handleRowClick(cliente)}
-              >
+                >
                 <div className="table-cell">{cliente.nombres}</div>
                 <div className="table-cell">{cliente.apellidos}</div>
                 <div className="table-cell">{cliente.correo}</div>

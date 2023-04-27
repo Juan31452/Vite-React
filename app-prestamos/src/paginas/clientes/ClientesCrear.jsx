@@ -42,7 +42,7 @@ const ClientesCrear = () => {
   return (
     
     <div className='Formulario'>
-      <h3>Clientes</h3>      
+      <h3>Nuevo</h3>      
       <form onSubmit={GuardarDatos}>
      
         <div className="division-uno">
@@ -86,7 +86,7 @@ const ClientesCrear = () => {
             placeholder="direccion"
             value={direccion} onChange={ev => setDireccion(ev.target.value)}          />
         </div>
-        <button type="submit" className="miboton">
+        <button type="submit" id="miboton">
             Adicionar
         </button>
         
