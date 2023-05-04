@@ -5,6 +5,7 @@ import Login from '../paginas/Login';
 import Inicio from '../paginas/Inicio';
 import ListarClientes from '../paginas/clientes/ListarClientes';
 import UsuariosCrear from '../paginas/usuarios/UsuariosCrear';
+import EditarUsuarios from '../paginas/usuarios/EditarUsuarios';
 import ConfirmarCliente from '../paginas/clientes/ConfirmarCliente';
 import ClientesCrear from '../paginas/clientes/ClientesCrear';
 import EliminarCliente from '../paginas/clientes/EliminarCliente';
@@ -17,7 +18,7 @@ import ListarCuotas from '../paginas/cuotas/ListarCuotas';
 import Nofound from '../paginas/Nofound'
 import {  Navigate, Route, Routes } from 'react-router-dom';
 import { PRIVATE1,PRIVATE2,PRIVATE3,PRIVATE4,PRIVATE5,PRIVATE6,PRIVATE7,PRIVATE8,PRIVATE9,PRIVATE10,
-  PRIVATE11,PRIVATE12} from './Path';
+  PRIVATE11,PRIVATE12,PRIVATE13} from './Path';
 
 const Menu = () => {
   return (
@@ -38,6 +39,7 @@ const Menu = () => {
       <Route path={PRIVATE9} element={<EditarPrestamos />}></Route> 
       <Route path={PRIVATE10} element={<EliminarPrestamos />}></Route> 
       <Route path={PRIVATE11} element={<ListarCuotas />}></Route> 
+      <Route path={PRIVATE13} element={<EditarUsuarios />}></Route> 
 
       {/* Redireccionar a la página de login por defecto */}
       <Route index element={<Navigate to="/login" replace />} />

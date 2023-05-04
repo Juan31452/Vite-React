@@ -3,15 +3,26 @@ import '../estilos/layout.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ContextoUsuario } from './contexto/ContextoUsuario';
-import Login from '../paginas/Login';
+import MenuEmergente from './MenuEmergente';
+
 
 const Layout = () => {
-  const { email,logout,ocultarDiv,textoBoton } = useContext(ContextoUsuario);
+  const { email,ocultarDiv } = useContext(ContextoUsuario);
   const [isOpen, setIsOpen] = useState(false); // Estado para manejar la apertura/cierre del menú
+  const [showMenu, setShowMenu] = useState(false);// Estado para controlar la visibilidad del modal
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  
+  const handleUserClick = () => {
+    setShowMenu(!showMenu);
+  }
+
+  const handleMenuClose = () => {
+    setShowMenu(false);
+  }
 
   useEffect(() => {
     console.log(email);
@@ -22,8 +33,8 @@ const Layout = () => {
 
   return (
     <nav> 
-      {ocultarDiv ?  <div id="cerrarsesion" onClick={logout}>{email}</div> :  null }
-        
+      {ocultarDiv ?  <div id="cerrarsesion" onClick={handleUserClick}>{email}</div> :  null }
+      {showMenu && <MenuEmergente onClose={handleMenuClose} />} 
        
       
       <div className={menuClass}>
@@ -54,7 +65,8 @@ const Layout = () => {
         </ul>
         
         
-      </div>  
+      </div>
+      
     </nav>
 
   )

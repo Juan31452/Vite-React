@@ -53,6 +53,16 @@
     
  }
 
+ .menuUsuario{
+    width: 10%; /* Define el ancho del div */
+    height: 20%;
+    margin: 0 auto; /* Define margen superior e inferior a 0 y margen izquierdo y derecho como auto */
+    font-size: 12px;
+    color: #01102a;
+    border-radius: 5px;
+    background-color: #88e490;
+ }
+
   /* Estilos para pantallas pequeñas */
   @media (max-width: 768px) {
   .Formulario {

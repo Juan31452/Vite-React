@@ -10,3 +10,4 @@ export const PRIVATE9 = '/modificarp/:id';
 export const PRIVATE10 = '/eliminarPrestamo/:id';
 export const PRIVATE11 = '/ListarCuotas/:id';
 export const PRIVATE12 = '/cuotasCrear/:id';
+export const PRIVATE13 ='/editarUsuarios/:id';
