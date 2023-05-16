@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import app from "../../app.json";
 import mialerta from 'sweetalert';
+import { TipoConexion } from '../../../TipoConexion';
+
 
 const EditarClientes = () => {
   const [nombres, setNombres ] = useState(""); 
@@ -13,21 +14,24 @@ const EditarClientes = () => {
   const [direccion, setDireccion] = useState("");
   const navigate = useNavigate();
   
-  const {APIHOST}= app;
-
+  
   let { id } = useParams();
+  
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
 
     useEffect(() => {
       console.log(id); 
       const editarClientes = async () => {
         try {
-          const response = await axios.get(`${APIHOST}/clientes/`+ id);
+          const response = await api.get('/clientes/'+ id);
           setNombres(response.data.nombres);
           setApellidos(response.data.apellidos);
           setCorreo(response.data.correo);
           setCedula(response.data.cedula);
           setDireccion(response.data.direccion);
-          setUsuario(response.data.usuario)
+          //setUsuario(response.data.usuario)
           console.log(nombres);
         } catch (error) {
           console.error(error);
@@ -61,8 +65,8 @@ const EditarClientes = () => {
       direccion: direccion,
     };
     
-    let url = `${APIHOST}/clientes/` + id;
-      axios.put(url,usuarioActual)
+    let url = '/clientes/' + id;
+      api.put(url,usuarioActual)
         .then(res => {console.log(url)
         console.log(res.data);
         console.log("Modificado")

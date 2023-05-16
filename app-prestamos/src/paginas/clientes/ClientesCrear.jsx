@@ -1,13 +1,12 @@
 import axios from 'axios';
 import '../../estilos/form.css';
 import React, { useState } from "react";
-import app from "../../app.json";
 import { useContext } from 'react';
 import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
 import { useNavigate } from 'react-router-dom';
+import { TipoConexion } from '../../../TipoConexion';
 
 const ClientesCrear = () => {
-  const {APIHOST}= app;
   const [nombres, setNombres ] = useState(""); 
   const [apellidos, setApellidos] = useState("");
   const [correo, setCorreo] = useState("");
@@ -15,7 +14,11 @@ const ClientesCrear = () => {
   const [direccion, setDireccion] = useState("");
   const { id } = useContext(ContextoUsuario);
   const navigate = useNavigate();
-  
+
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
+
   const GuardarDatos = (event) => {
     event.preventDefault()
 
@@ -30,8 +33,8 @@ const ClientesCrear = () => {
   
     };
     
-    axios
-    .post(`${APIHOST}/clientes `,usuarioActual)
+    api
+    .post('/clientes ',usuarioActual)
     .then((res) => { 
      const usuario = res.data;
      navigate('/inicio');    

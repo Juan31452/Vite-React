@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import app from "../../app.json";
 import '../../estilos/table.css';
 import Loading from '../../componentes/Loading';
 import Modal from '../../componentes/Modal';
@@ -9,6 +8,7 @@ import Milink from '../../componentes/Milink';
 import ClientesCrear from './ClientesCrear';
 import { useContext } from 'react';
 import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
+import { TipoConexion } from '../../../TipoConexion';
 
 const ListarClientes = () => {
   const { id } = useContext(ContextoUsuario);
@@ -17,8 +17,10 @@ const ListarClientes = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [mostrar, setMostrar] = useState(false);
   
-  const {APIHOST}= app;
-  
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
+
   const handleRowClick = cliente => {
     setSelectedLoan(cliente);
     console.log(cliente._id);
@@ -28,7 +30,7 @@ const ListarClientes = () => {
   useEffect(() => {
     const fetchClientes = async () => {
       try {
-        const response = await axios.get(`${APIHOST}/clientes/buscarPorUsuario/`+ id);
+        const response = await api.get('/clientes/buscarPorUsuario/'+ id);
         setListaclientes(response.data);
         console.log(id);
         
@@ -40,7 +42,7 @@ const ListarClientes = () => {
     };
 
     fetchClientes();
-  }, [APIHOST]);
+  }, []);
   
   if (isLoading) {
     return <div> <Loading /> </div>;
@@ -48,7 +50,7 @@ const ListarClientes = () => {
   
   const buscarClientesPorNombre = async (consulta) => {
     try {
-      const response = await axios.get(`${APIHOST}/clientes/buscarPorNombre/${consulta}`);
+      const response = await api.get('/clientes/buscarPorNombre/'+consulta);
       setListaclientes(response.data);
       console.log(consulta);
       console.log(listaclientes);
@@ -64,14 +66,17 @@ const ListarClientes = () => {
       <div id='contenedorBotonAdiciona'>
        <button id='miboton' onClick={() => setMostrar(true)}>Adicionar</button> 
       </div>
-      <div className="table">
-       {selectedLoan ? (
-         <div className='enlace'>
-           <Milink to={`/modificar/${selectedLoan._id}`}> Modificar  </Milink> 
-           <Milink to={`/confirmarCliente/${selectedLoan._id}`}>Elimina</Milink>
+      <div>
+        {selectedLoan ? (
+          <div className='enlace'>
+            <Milink to={`/modificar/${selectedLoan._id}`}> Modificar  </Milink> 
+            <Milink to={`/confirmarCliente/${selectedLoan._id}`}>Elimina</Milink>
           </div>
         ) : null} 
 
+      </div>
+      <div className="table">
+      
         <div className="table-header">
           <div className="table-cell">Nombres </div>
           <div className="table-cell">Apellidos </div>

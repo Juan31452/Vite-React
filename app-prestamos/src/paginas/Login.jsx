@@ -4,7 +4,7 @@ import app from "../app.json";
 import axios from 'axios';
 import { useContext } from 'react';
 import { ContextoUsuario } from '../componentes/contexto/ContextoUsuario';
-import Inicio from './Inicio';
+import { TipoConexion } from '../../TipoConexion';
 import { useNavigate, Link } from 'react-router-dom';
 import mialerta from 'sweetalert';
 import { gsap } from 'gsap'
@@ -15,7 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { login } = useContext(ContextoUsuario);
   const navigate = useNavigate();
-
+ 
   const {APIHOST}= app;
   
   const MostrarAlerta = () => {
@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     animateForm();
-  }, []);
+  }, []);TipoConexion
 
   const CargarDatos = async (event) => {
     event.preventDefault();
@@ -47,7 +47,12 @@ const Login = () => {
   
    
       };
-      const response = await axios.post(`${APIHOST}/usuarios/login `,usuarioActual)
+
+      const api = axios.create({
+        baseURL: TipoConexion.apiUrl,
+      });
+
+      const response = await api.post('/usuarios/login ',usuarioActual)
       const { _id: id } = response.data;
       const {interes: interes} = response.data;
       console.log(id);

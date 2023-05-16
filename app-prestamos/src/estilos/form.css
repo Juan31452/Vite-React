@@ -1,11 +1,11 @@
 .Formulario {
-    margin: 10px, 10px;
+    margin: 5px, 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 400px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 5px;
     background-color: #88a3e4;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
@@ -66,19 +66,24 @@
   /* Estilos para pantallas pequeñas */
   @media (max-width: 768px) {
   .Formulario {
-   
+    width: auto;
     padding: 1rem;
-    margin: 1px,1px;
-    align-items: start;
+    margin: 2px,2px;
+    align-items: center;
   }
   
+  .Formulario h3
+  {
+    text-align: center;
+  }
+
   .division-uno{
-    margin: 0.2rem;
-    width: 0.1rem;
+    margin: 1rem;
+    width: auto;
   }
     
   input {
-    width: 18rem;
+    width: 15rem;
     height: 1rem;
     font-size: 10px;
     padding: 1rem;
