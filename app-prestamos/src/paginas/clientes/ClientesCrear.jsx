@@ -5,6 +5,8 @@ import { useContext } from 'react';
 import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
 import { useNavigate } from 'react-router-dom';
 import { TipoConexion } from '../../../TipoConexion';
+//import Alerta from '../../componentes/Alerta';
+import mialerta from "sweetalert";
 
 const ClientesCrear = () => {
   const [nombres, setNombres ] = useState(""); 
@@ -36,10 +38,23 @@ const ClientesCrear = () => {
     api
     .post('/clientes ',usuarioActual)
     .then((res) => { 
-     const usuario = res.data;
-     navigate('/inicio');    
-      console.log(usuario);   
+     const usuario = res.data;   
+      console.log(usuario);  
+      Alerta();   
     });
+
+    const Alerta = () => {
+      mialerta({
+        title: "Clientes",
+        text: "Registro Guardado con Exito",
+        icon: "success",
+        button: "Aceptar",
+      }).then((res) => {
+        navigate('/inicio');
+      });
+    };
+
+
     
   } 
   return (

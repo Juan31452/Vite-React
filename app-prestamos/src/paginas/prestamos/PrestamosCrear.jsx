@@ -1,26 +1,27 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import app from "../../app.json";
 import '../../estilos/table.css';
 import { useContext } from 'react';
 import { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
 import mialerta from "sweetalert";
 import { useNavigate } from 'react-router-dom';
-
+import { TipoConexion } from '../../../TipoConexion';
 
 const PrestamosCrear = () => {
   const [fecha, setFecha ] = useState(""); 
   const [valor_prestamo, setValor_prestamo] = useState("");
-  //const [miinteres, setMiinteres] = useState("");
   const [cuota, setCuota ] = useState(""); 
   const [cliente, setCliente] = useState("");
   const [debe, setDebe] = useState("");
   const [letra, setLetra] = useState("");
   const [fotocopia, setFotocopia] = useState("");
   const [listaclientes, setListaclientes ] = useState("");
-  const {APIHOST}= app;
   const { id, interes } = useContext(ContextoUsuario);
   const navigate = useNavigate();
+  
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
 
   const GuardarDatos = (event) => {
     event.preventDefault()
@@ -38,8 +39,8 @@ const PrestamosCrear = () => {
       usuario: id,
       
     };
-    axios
-    .post(`${APIHOST}/prestamos `,prestamoActual)
+    api
+    .post('/prestamos ',prestamoActual)
     .then((res) => { 
      const prestamo = res.data;
        console.log(prestamo);
@@ -62,20 +63,18 @@ const PrestamosCrear = () => {
   
   const calculo = () => {
     let micuota = (valor_prestamo * interes)/100 ;
-    console.log(micuota);
-    //setMiinteres(interes);
+    console.log(micuota); 
     setCuota(micuota);
     setDebe(valor_prestamo);
     setLetra("Si");
     setFotocopia("Si");
-    //return micuota;
-
+   
   }
-
+  
   useEffect(() => {
     const fetchClientes = async () => {
       try {
-        const response = await axios.get(`${APIHOST}/clientes/buscarPorUsuario/`+ id);
+        const response = await api.get('/clientes/buscarPorUsuario/'+ id);
         setListaclientes(response.data);
       } catch (error) {
         console.error(error);
@@ -83,8 +82,8 @@ const PrestamosCrear = () => {
     };
 
     fetchClientes();
-  }, [APIHOST]);
-
+  }, []);
+  
   return (
     <div className="Formulario">
     <form onSubmit={GuardarDatos}>

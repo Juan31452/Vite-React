@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import app from "../../app.json";
 import '../../estilos/table.css';
 import Modal from '../../componentes/Modal';
 import PrestamosCrear from './PrestamosCrear';
@@ -9,14 +8,18 @@ import Milink from '../../componentes/Milink';
 import Consultar from '../../componentes/Consultar';
 import { useContext } from 'react';
 import  { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
+import { TipoConexion } from '../../../TipoConexion';
 
 const ListarPrestamos = () => {
   const { id } = useContext(ContextoUsuario);
   const [mostrar, setMostrar] = useState(false);
   const [listaprestamos, setListaprestamos ] = useState("");
-  const {APIHOST}= app;
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLoan, setSelectedLoan] = useState(null);
+
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
   
   const handleRowClick = prestamo => {
     setSelectedLoan(prestamo);
@@ -27,7 +30,7 @@ const ListarPrestamos = () => {
   useEffect(() => {
      const fetchPrestamos = async () => {
       try {
-        const response = await axios.get(`${APIHOST}/prestamos/buscarPorUsuario/`+ id);
+        const response = await api.get('/prestamos/buscarPorUsuario/'+ id);
         setListaprestamos(response.data);
       } catch (error) {
         console.error(error);
@@ -36,7 +39,7 @@ const ListarPrestamos = () => {
      };
 
      fetchPrestamos();
-    }, [APIHOST]);
+    }, []);
 
   if (isLoading) {
    return <div> <Loading /> </div>;
@@ -44,7 +47,7 @@ const ListarPrestamos = () => {
   
   const buscarClientesPorNombre = async (consulta) => {
     try {
-      const response = await axios.get(`${APIHOST}/prestamos/buscarPorNombre/${consulta}`);
+      const response = await api.get('/prestamos/buscarPorNombre/'+ consulta);
       setListaprestamos(response.data);
       console.log(consulta);
       console.log(listaprestamos);

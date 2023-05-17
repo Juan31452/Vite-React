@@ -3,6 +3,7 @@ import app from "../../app.json";
 import axios from 'axios';
 import '../../estilos/form.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import { TipoConexion } from '../../../TipoConexion';
 
 const CuotasCrear = (prestamoActual) => {
   const [fecha, setFecha ] = useState(""); 
@@ -15,11 +16,15 @@ const CuotasCrear = (prestamoActual) => {
   const navigate = useNavigate();
   let { id } = useParams();
 
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
+
   const calculo = () => {
-    let url = `${APIHOST}/prestamos/`+ id
+    let url = '/prestamos/'+ id
     console.log(url);
     
-    axios
+    api
     .get(url)
     .then(res => { console.log(res.data)
     setListaprestamos(res.data)  
@@ -61,16 +66,16 @@ const CuotasCrear = (prestamoActual) => {
       debe: saldo,
     };
     console.log(cuotaActual);
-    axios
-    .post(`${APIHOST}/cuotas`,cuotaActual)
+    api
+    .post('/cuotas ',cuotaActual)
     .then((res) => { 
      const cuotas = res.data;
      console.log(cuotas);   
      console.log(prestamo);
     });
 
-    let url = `${APIHOST}/prestamos/`+ prestamo;
-    axios.put(url, usuarioActual).then((res) => {
+    let url = '/prestamos/' + prestamo;
+    api.put(url, usuarioActual).then((res) => {
       console.log(usuarioActual);
       console.log(url);
       console.log(res.data);

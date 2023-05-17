@@ -1,11 +1,11 @@
 import axios from 'axios';
-import app from "../../app.json";
 import '../../estilos/table.css';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Loading from '../../componentes/Loading';
 import CuotasCrear from './CuotasCrear';
 import Modal from '../../componentes/Modal';
+import { TipoConexion } from '../../../TipoConexion';
 
 const ListarCuotas = () => {
   const [mostrar, setMostrar] = useState(false);   
@@ -13,7 +13,10 @@ const ListarCuotas = () => {
   const { id } = useParams();
   const [selectedLoan, setSelectedLoan] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const {APIHOST}= app;
+  
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
 
   const handleRowClick = cuota => {
     setSelectedLoan(cuota);
@@ -24,7 +27,7 @@ const ListarCuotas = () => {
   useEffect(() => {
     const fetchCuotas = async () => {
       try {
-        const response = await axios.get(`${APIHOST}/cuotas/buscarprestamo/` + id);
+        const response = await api.get('/cuotas/buscarprestamo/' + id);
         setListacuotas(response.data);
       } catch (error) {
         console.error(error);
@@ -33,7 +36,7 @@ const ListarCuotas = () => {
     };
 
     fetchCuotas();
-  }, [APIHOST]);
+  }, []);
 
   if (isLoading) {
     return <div> <Loading /> </div>;

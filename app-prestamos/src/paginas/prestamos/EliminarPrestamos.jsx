@@ -1,17 +1,19 @@
 import axios from 'axios';
 import React from 'react'
 import { NavLink ,useParams } from 'react-router-dom';
-import app from "../../app.json";
+import { TipoConexion } from '../../../TipoConexion';
 
 const EliminarPrestamos = () => {
   const {APIHOST}= app;
   let { id } = useParams();
   console.log(id); 
   
-  
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  }); 
 
   console.log(id);
-  axios.delete(`${APIHOST}/prestamos/`+ id).then(res => {console.log(res.data)
+  api.delete('/prestamos/'+ id).then(res => {console.log(res.data)
       this.setState({ status: true });
   console.log("Eliminado")    
   });

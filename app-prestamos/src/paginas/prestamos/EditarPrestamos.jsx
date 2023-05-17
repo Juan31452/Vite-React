@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import  { ContextoUsuario } from '../../componentes/contexto/ContextoUsuario';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import app from "../../app.json";
 import mialerta from 'sweetalert';
+import { TipoConexion } from '../../../TipoConexion';
 
 const EditarPrestamos = () => {
   const [fecha, setFecha] = useState("");
@@ -16,27 +16,36 @@ const EditarPrestamos = () => {
   const [letra, setLetra] = useState("");
   const [fotocopia, setFotocopia] = useState("");
   //const [listaclientes, setListaclientes] = useState("");
-  const { APIHOST } = app;
   const { interes } = useContext(ContextoUsuario);
   const navigate = useNavigate();
   let { id } = useParams();
   
+  const api = axios.create({
+    baseURL: TipoConexion.apiUrl,
+  });
+
   useEffect(() => {
     console.log(id);
-
-    console.log(id);
-    axios.get(`${APIHOST}/prestamos/` + id).then((res) => {
-      console.log(res);
-      setFecha(res.data.fecha);
-      setValor_prestamo(res.data.valor_prestamo);
-      setCuota(res.data.cuota);
+    const editarPrestamos = async () => {
+    try {
+      const response = await api.get('/prestamos/'+ id);
+      setFecha(response.data.fecha);
+      setValor_prestamo(response.data.valor_prestamo);
+      setCuota(response.data.cuota);
       //setCliente(res.data.cliente);
-      setDebe(res.data.debe);
-      setLetra(res.data.letra);
-      setFotocopia(res.data.fotocopia);
+      setDebe(response.data.debe);
+      setLetra(response.data.letra);
+      setFotocopia(response.data.fotocopia);
       console.log(fecha);
-    });
-  }, []);
+
+    } catch (error) {
+      console.error(error);
+    }
+    
+  };  
+         
+  editarPrestamos();
+},[] );
 
   const MostrarAlerta = () => {
     mialerta({
@@ -62,8 +71,8 @@ const EditarPrestamos = () => {
       debe: debe,
     };
 
-    let url = `${APIHOST}/prestamos/` + id;
-    axios.put(url, usuarioActual).then((res) => {
+    let url = '/prestamos/' + id;
+      api.put(url, usuarioActual).then((res) => {
       console.log(url);
       console.log(res.data);
       console.log("Modificado");
