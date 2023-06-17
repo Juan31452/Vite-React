@@ -7,7 +7,7 @@ import MenuEmergente from './MenuEmergente';
 
 
 const Layout = () => {
-  const { email,ocultarDiv } = useContext(ContextoUsuario);
+  const { email,ocultarDiv,textoBoton } = useContext(ContextoUsuario);
   const [isOpen, setIsOpen] = useState(false); // Estado para manejar la apertura/cierre del menú
   const [showMenu, setShowMenu] = useState(false);// Estado para controlar la visibilidad del modal
 
